@@ -1,0 +1,62 @@
+Currency Converter API Documentation
+Base URL
+Local: http://localhost:8080/api/v1/currency
+
+Endpoints
+1. Convert Currency
+POST /convert
+Converts a specified amount from one currency to another using real-time exchange rates.
+
+Request
+Headers:
+Content-Type: application/json
+
+Body Parameters:
+
+Field	Type	Required	Description
+from	String	Yes	The currency code to convert from.
+to	String	Yes	The currency code to convert to.
+amount	Double	Yes	The amount to be converted.
+
+Example:
+
+json
+Copy code
+{
+  "from": "USD",
+  "to": "EUR",
+  "amount": 100
+}
+Response
+Status: 200 OK
+
+Body:
+
+Field	Type	Description
+from	String	The source currency code.
+to	String	The target currency code.
+amount	Double	The original amount specified.
+convertedAmount	Double	The equivalent amount in the target currency.
+
+Example:
+
+json
+Copy code
+{
+  "from": "USD",
+  "to": "EUR",
+  "amount": 100,
+  "convertedAmount": 92.5
+}
+
+Response
+Status: 200 OK
+
+
+Errors
+HTTP Status	Error Message	Description
+400	Invalid currency code	The provided currency code is invalid.
+500	ExchangeRates API failure	Unable to fetch exchange rates.
+
+
+
